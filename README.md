@@ -13,12 +13,13 @@ Different ways to recover a Proxmark3
 ## Flashing with the old flasher
 
 + Using old_flasher and later the new_flasher
++ Binaries (Win/Linux/Mac)
 
 ***
 
 ## TODO
 
-+ Instructions
++ Instructions (Win/Linux/Mac)
 + Complete script
 + Improve
 
