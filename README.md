@@ -4,6 +4,13 @@ Different ways to recover a Proxmark3
 
 ***
 
+## Dependencies
+
++ openocd
++ proxmark3 dependencies
+
+***
+
 ## Bricked
 
 + Using Bus Pirate + Expect Script
