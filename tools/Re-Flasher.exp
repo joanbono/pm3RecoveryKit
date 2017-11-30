@@ -1,0 +1,38 @@
+#!/usr/bin/expect -f
+# Title: Re-Flasher.exp
+# Description: Reflash PM3 automatically
+# Author: Joan Bono (@joan_bono)
+# Version: 0.0.1
+# Last Modified: jbono @ 20171018
+
+set timeout -1
+
+if { $argc == 0 } {
+        puts "\nProxmark3 Re-Flasher"
+	puts "USAGE: ./Re-Flasher.exp \[OpenOCD CONFIG FILE\]\n"
+        exit 1
+}
+
+set result [exec which openocd]
+#set JTAG_DEVICE [lindex $argv 0]
+set JTAG_DEVICE "../tools/at91sam7s512-buspirate.cfg"
+
+puts "\nOpenOCD Installed on: $result"
+puts "Config file: ${JTAG_DEVICE}\n"
+
+#spawn $result -f ${JTAG_DEVICE}
+#spawn telnet localhost 4444
+
+#spawn screen -dmS "BusPirateOCD" "openocd" "-f ../tools/at91sam7s512-buspirate.cfg"
+
+spawn telnet localhost 4444
+expect * { send "\r" }
+expect "> " { send "halt\r" }
+expect "> " { send "flash erase_sector 0 0 15\r" }
+expect "> " { send "flash write_image ./../armsrc/obj/fullimage.elf\r" }
+expect "> " { send "flash write_image ./../bootrom/obj/bootrom.elf\r" }
+expect "> " { send "exit\r" }
+
+puts "\nThe Proxmark has been re-flashed\n"
+
+interact
