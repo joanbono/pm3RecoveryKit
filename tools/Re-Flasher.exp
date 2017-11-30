@@ -15,7 +15,7 @@ if { $argc == 0 } {
 
 set result [exec which openocd]
 
-set JTAG_DEVICE "at91sam7s512-buspirate.cfg"
+set JTAG_DEVICE "buspirate.cfg"
 
 puts "\nOpenOCD Installed on: $result"
 puts "Config file: ${JTAG_DEVICE}\n"
@@ -24,8 +24,8 @@ spawn telnet localhost 4444
 expect * { send "\r" }
 expect "> " { send "halt\r" }
 expect "> " { send "flash erase_sector 0 0 15\r" }
-expect "> " { send "flash write_image fullimage.elf\r" }
-expect "> " { send "flash write_image bootrom.elf\r" }
+expect "> " { send "flash write_image ../fullimage.elf\r" }
+expect "> " { send "flash write_image ../bootrom.elf\r" }
 expect "> " { send "exit\r" }
 
 puts "\nThe Proxmark has been re-flashed\n"
