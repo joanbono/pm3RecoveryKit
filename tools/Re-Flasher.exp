@@ -24,8 +24,8 @@ spawn telnet localhost 4444
 expect * { send "\r" }
 expect "> " { send "halt\r" }
 expect "> " { send "flash erase_sector 0 0 15\r" }
-expect "> " { send "flash write_image ./../armsrc/obj/fullimage.elf\r" }
-expect "> " { send "flash write_image ./../bootrom/obj/bootrom.elf\r" }
+expect "> " { send "flash write_image fullimage.elf\r" }
+expect "> " { send "flash write_image bootrom.elf\r" }
 expect "> " { send "exit\r" }
 
 puts "\nThe Proxmark has been re-flashed\n"
