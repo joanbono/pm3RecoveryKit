@@ -114,9 +114,9 @@ new_flasher.exe COMX ..\fullimage.elf
 
 ## TODO
 
-+ Instructions (Win/Linux/Mac)
-+ Complete script
-+ Improve
++ [ ] Instructions (Win/Linux/Mac)
++ [ ] Complete script
++ [ ] Improve
 
 ***
 
