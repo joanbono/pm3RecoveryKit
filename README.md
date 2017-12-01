@@ -37,6 +37,9 @@ Download from [GNU Toolchains](http://gnutoolchains.com/arm-eabi/openocd/)
 ~~~bash
 brew tap proxmark/proxmark3
 brew install proxmark3
+git clone https://github.com/proxmark/proxmark3.git
+cd proxmark3
+make clean && make all
 ~~~
 
 #### Linux
@@ -58,6 +61,13 @@ make clean && make all
 1. [`ProxSpace`](https://github.com/Gator96100/ProxSpace/archive/master.zip)
   + Decompress in `C:\PRROJECTS\Proxmark`
 
+~~~bash
+git clone https://github.com/proxmark/proxmark3 pm3
+move /Y pm3 C:\PROJECTS\Proxmark
+C:\PROJECTS\ProxSpace\runme.bat
+make clean && make all
+~~~
+
 ***
 
 ## Bricked
@@ -69,7 +79,36 @@ make clean && make all
 ## Flashing with the old flasher
 
 + Using old_flasher and later the new_flasher
-+ Binaries (Win/Linux/Mac)
+
+### Binaries (Win/Linux/Mac)
+
+#### macOS
+
+Connect the `proxmark3` and run:
+
+~~~bash
+PM3=$(ls /dev/cu.usbmodem*)
+cd $USER/pm3RecoveryKit/macOS
+./old_flasher $PM3 -b ../bootrom.elf
+./new_flasher $PM3 ../fullimage.elf
+~~~
+
+#### Linux
+
+~~~bash
+PM3=$(ls /dec/ttyACM*)
+cd $USER/pm3RecoveryKit/Linux
+./old_flasher $PM3 -b ../bootrom.elf
+./new_flasher $PM3 ../fullimage.elf
+~~~
+
+#### Windows
+
+~~~bash
+cd C:\PROJECTS\pm3RecoveryKit\Windows
+old_flasher.exe COMX -b ..\bootrom.elf
+new_flasher.exe COMX ..\fullimage.elf
+~~~
 
 ***
 
