@@ -79,6 +79,8 @@ make clean && make all
 ## Flashing with the old flasher
 
 + Using old_flasher and later the new_flasher
++ Press the Button and then connect to the USB port. Do not release the button.
++ Identify the `COM`, `/dev/cu.usbmodem` or the `/dev/ttyACM` port.
 
 ### Binaries (Win/Linux/Mac)
 
